@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.slaydevil.core.entities.Entity"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.Handler"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.entities.projectiles.ProjectileManager"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.entities.projectiles.Projectile"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.entities.statics.StaticEntity"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.Game"/>
+<fullyQualifiedTypeName name="com.slaydevil.core.entities.statics.DebugEntity"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+</qualifiedTypeNameHistroy>

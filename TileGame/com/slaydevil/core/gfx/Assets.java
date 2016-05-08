@@ -24,7 +24,7 @@ public class Assets {
 			player = sheet.crop(3 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			stoneWall = sheet.crop(0 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			stoneFloor = sheet.crop(1 * TILE_SIZE, 0 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-			woodFloor = sheet.crop(0 * TILE_SIZE, 3 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+			woodFloor = sheet.crop(0 * TILE_SIZE, 1 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			grass1 = sheet.crop(0 * TILE_SIZE, 8 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			grass2 = sheet.crop(1 * TILE_SIZE, 8 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 			tree = sheet.crop(4 * TILE_SIZE, 9 * TILE_SIZE, TILE_SIZE, TILE_SIZE);

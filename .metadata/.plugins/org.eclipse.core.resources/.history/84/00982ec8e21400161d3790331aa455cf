@@ -1,0 +1,5 @@
+package com.slaydevil.core.entities.statics;
+
+public class DebugEntity {
+
+}

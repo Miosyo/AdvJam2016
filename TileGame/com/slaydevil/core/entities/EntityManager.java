@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import com.slaydevil.core.Handler;
-import com.slaydevil.core.entities.dynamic.Player;
+import com.slaydevil.core.entities.creatures.Player;
+import com.slaydevil.core.entities.projectiles.Projectile;
+import com.slaydevil.core.entities.projectiles.ProjectileManager;
 
 public class EntityManager {
 	private Handler handler;
 	private Player player;
+	private ProjectileManager pManager;
 
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {		
@@ -28,9 +31,11 @@ public class EntityManager {
 		this.player = player;
 		entities = new ArrayList<Entity>();
 		addEntity(player);
+		pManager = new ProjectileManager(handler, this);
 	}
 
 	public void update() {
+		pManager.update();
 		for (Entity e : entities) {
 			e.update();
 		}
@@ -41,10 +46,15 @@ public class EntityManager {
 		for (Entity e : entities) {
 			e.render(g);
 		}
+		pManager.render(g);
 	}
 
 	public void addEntity(Entity e) {
 		entities.add(e);
+	}
+	
+	public void addProjectile(Projectile p){
+		pManager.addProjectile(p);
 	}
 
 	public Handler getHandler() {
@@ -69,6 +79,10 @@ public class EntityManager {
 
 	public void setEntities(ArrayList<Entity> entities) {
 		this.entities = entities;
+	}
+
+	public ProjectileManager getpManager() {
+		return pManager;
 	}
 
 }

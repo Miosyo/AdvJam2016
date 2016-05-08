@@ -3,7 +3,7 @@ package com.slaydevil.core.states;
 import java.awt.Graphics;
 
 import com.slaydevil.core.Handler;
-import com.slaydevil.core.entities.dynamic.Player;
+import com.slaydevil.core.entities.creatures.Player;
 import com.slaydevil.core.entities.statics.Tree;
 import com.slaydevil.core.worlds.World;
 

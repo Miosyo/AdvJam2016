@@ -4,7 +4,8 @@ import java.awt.Graphics;
 
 import com.slaydevil.core.Handler;
 import com.slaydevil.core.entities.EntityManager;
-import com.slaydevil.core.entities.dynamic.Player;
+import com.slaydevil.core.entities.creatures.Player;
+import com.slaydevil.core.entities.statics.DebugEntity;
 import com.slaydevil.core.entities.statics.Tree;
 import com.slaydevil.core.tiles.Tile;
 import com.slaydevil.core.utils.Utils;
@@ -27,6 +28,8 @@ public class World {
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
 
+		
+		entityManager.addEntity(new DebugEntity(handler, 0, 12, 0, 0));
 		entityManager.addEntity(new Tree(handler, 192, 128));
 	}
 

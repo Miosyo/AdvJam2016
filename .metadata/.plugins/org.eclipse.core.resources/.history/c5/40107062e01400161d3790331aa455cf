@@ -1,0 +1,18 @@
+package com.slaydevil.core.entities.projectiles;
+
+import java.util.ArrayList;
+
+import com.slaydevil.core.Handler;
+import com.slaydevil.core.entities.EntityManager;
+
+public class ProjectileManager {
+	private Handler handler;
+	private EntityManager entityManager;
+	
+	private ArrayList<Projectile> projectiles;
+	
+	public ProjectileManager(Handler handler, EntityManager entityManager) {
+		this.handler = handler;
+		this.entityManager = entityManager;
+	}
+}
