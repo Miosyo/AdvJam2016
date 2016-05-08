@@ -17,7 +17,7 @@ public class Game implements Runnable{
 	public int height;
 	
 	public static int fps = 0;
-	public static float deltaTime = 60.0f / 1.0f;
+	public static float deltaTime = 0.0f;
 	
 	private boolean running = false;
 	
@@ -74,34 +74,32 @@ public class Game implements Runnable{
 	
 	public void run(){
 		init();
-		
-		int desiredFps = 120;
-		double timePerTick = 1000000000 / desiredFps;
-		double delta = 0;
-		long now;
 		long lastTime = System.nanoTime();
-		
-		long timer = 0;
-		int ticks = 0;
-		
-		while(running){
-			now = System.nanoTime();
-			delta += (now - lastTime) / timePerTick;
-			timer += now - lastTime;
+		long timer = System.currentTimeMillis();
+		final double ns = 1000000000.0 / 60.0;
+		double delta = 0;
+		int frames = 0;
+		int updates = 0;
+		while (running) {
+			long now = System.nanoTime();
+			deltaTime = (float) ((now - lastTime) / ns);
+			delta += deltaTime;
 			lastTime = now;
-			
-			if (delta >= 1){	
+			while (delta >= 1) {
 				update();
-				render();
-				ticks++;
-				delta--;
+				++updates;
+				--delta;
 			}
-			if (timer >= 1000000000){
-				Game.fps = ticks;
-				Game.deltaTime = 1.0f / (float)Game.fps;
-				System.out.println("Delta " + Game.deltaTime);
-				ticks = 0;
-				timer = 0;
+			render();
+			++frames;
+			
+			if (System.currentTimeMillis() - timer > 1000) {
+				timer += 1000;
+				display.getFrame().setTitle("Game " + updates + " ups, " + frames + " fps");
+				fps = frames;
+				//deltaTime = (float) (updates / ns);
+				frames = 0;
+				updates = 0;
 			}
 		}
 		stop();
