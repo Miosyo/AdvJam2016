@@ -1,5 +1,6 @@
 package com.slaydevil.core.worlds;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import com.slaydevil.core.Handler;
@@ -30,7 +31,7 @@ public class World {
 
 		
 		entityManager.addEntity(new DebugEntity(handler, 0, 12, 0, 0));
-		entityManager.addEntity(new Tree(handler, 192, 128));
+		entityManager.addEntity(new Tree(handler, 256, 128));
 	}
 
 	public void update() {
@@ -49,7 +50,7 @@ public class World {
 	public Tile getTile(int x, int y) {
 		Tile t = Tile.tiles[tiles[x][y]];
 		if (t == null)
-			return Tile.rockTile;
+			return Tile.grassTile;
 		return t;
 	}
 

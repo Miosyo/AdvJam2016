@@ -40,7 +40,7 @@ public class Player extends Creature {
 		if (handler.getkeyManager().right)
 			xMove = speed;
 		if (handler.getkeyManager().fire)
-			handler.getWorld().getEntityManager().addProjectile(new Projectile(handler, x, y, width, height, 0));
+			handler.getWorld().getEntityManager().addEntity(new Projectile(handler, x, y, width, height, 0));
 	}
 
 	@Override

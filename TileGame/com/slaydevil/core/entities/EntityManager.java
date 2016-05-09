@@ -6,16 +6,14 @@ import java.util.Comparator;
 
 import com.slaydevil.core.Handler;
 import com.slaydevil.core.entities.creatures.Player;
-import com.slaydevil.core.entities.projectiles.Projectile;
-import com.slaydevil.core.entities.projectiles.ProjectileManager;
 
 public class EntityManager {
 	private Handler handler;
 	private Player player;
-	private ProjectileManager pManager;
 
 	private ArrayList<Entity> entities;
-	private Comparator<Entity> renderSorter = new Comparator<Entity>() {		
+	private ArrayList<Entity> entityBuffer;
+	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		@Override
 		public int compare(Entity a, Entity b) {
 			if (a.getY() + a.height < b.getY() + b.height) {
@@ -30,15 +28,23 @@ public class EntityManager {
 		this.handler = handler;
 		this.player = player;
 		entities = new ArrayList<Entity>();
+		entityBuffer = new ArrayList<Entity>();
 		addEntity(player);
-		pManager = new ProjectileManager(handler, this);
 	}
 
 	public void update() {
-		pManager.update();
 		for (Entity e : entities) {
 			e.update();
 		}
+		// Sort buffer into entity array
+		for (Entity e : entityBuffer) {
+			if (e.alive)
+				entities.add(e);
+			else
+				entities.remove(e);
+		}
+		entityBuffer.clear();
+		// sort render order for entities based on y axis
 		entities.sort(renderSorter);
 	}
 
@@ -46,15 +52,10 @@ public class EntityManager {
 		for (Entity e : entities) {
 			e.render(g);
 		}
-		pManager.render(g);
 	}
 
 	public void addEntity(Entity e) {
-		entities.add(e);
-	}
-	
-	public void addProjectile(Projectile p){
-		pManager.addProjectile(p);
+		entityBuffer.add(e);
 	}
 
 	public Handler getHandler() {
@@ -80,9 +81,4 @@ public class EntityManager {
 	public void setEntities(ArrayList<Entity> entities) {
 		this.entities = entities;
 	}
-
-	public ProjectileManager getpManager() {
-		return pManager;
-	}
-
 }

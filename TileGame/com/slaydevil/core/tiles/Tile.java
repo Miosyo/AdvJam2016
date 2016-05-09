@@ -7,9 +7,10 @@ public class Tile {
 	
 	public static Tile[] tiles = new Tile[256];
 	public static Tile grassTile = new GrassTile(0);
-	public static Tile rockTile = new RockTile(1);
-	public static Tile woodFloorTile = new WoodFloorTile(2);
-	
+	public static Tile wallTopLeftTile = new WallTopLeft(1);
+	public static Tile wallNorth = new WallNorth(5);
+	public static Tile wallSouth = new WallSouth(6);
+	public static Tile wallEast = new WallEast(7);
 	
 	//class
 	protected BufferedImage texture;
